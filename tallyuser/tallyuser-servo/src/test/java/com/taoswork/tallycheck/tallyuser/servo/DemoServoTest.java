@@ -1,9 +1,20 @@
 package com.taoswork.tallycheck.tallyuser.servo;
 
+import com.taoswork.tallycheck.authority.provider.AllPassAuthorityProvider;
+import com.taoswork.tallycheck.datadomain.base.entity.Persistable;
+import com.taoswork.tallycheck.datadomain.tallyuser.Person;
+import com.taoswork.tallycheck.dataservice.exception.ServiceException;
+import com.taoswork.tallycheck.dataservice.io.request.ReadRequest;
+import com.taoswork.tallycheck.dataservice.io.response.ReadResponse;
+import com.taoswork.tallycheck.datasolution.security.IProtectedAccessContext;
+import com.taoswork.tallycheck.datasolution.security.ProtectedAccessContext;
+import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
+import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolutionDefinition;
 import com.taoswork.tallycheck.tallyuser.EncryptPasswordHelper;
+import com.taoswork.tallycheck.tallyuser.TallyUserDataService;
 import com.taoswork.tallycheck.tallyuser.UserCertificationService;
-import org.junit.Assert;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +24,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class DemoServoTest {
     private static ClassPathXmlApplicationContext providerContext;
+    private static TallyUserDataSolution tallyUserDataSolution;
+    private static UserCertificationService userCertificationService;
+    private static TallyUserDataService tallyUserDataService;
+    private static final String ADMIN_ID = "000000000000000000000000";
 
     @BeforeClass
     public static void setup() {
@@ -20,13 +35,20 @@ public class DemoServoTest {
                 new ClassPathXmlApplicationContext("dubbo-tallyuser-demo-servo.xml");
         providerContext.start();
         System.out.println("context started");
+         tallyUserDataSolution = (TallyUserDataSolution)
+                 providerContext.getBean("tallyUserDataSolution");
+        tallyUserDataSolution.setAuthorityProvider(new AllPassAuthorityProvider());
+        tallyUserDataSolution.setAuthorityContext(new ProtectedAccessContext());
+        userCertificationService = (UserCertificationService)
+                providerContext.getBean("tallyUserCertService");
+        tallyUserDataService = (TallyUserDataService)
+                providerContext.getBean("tallyUserDataService");
     }
 
     @Test
-    public void xxx() {
+    public void testTallyUserCertService() {
         try {
-            String adminId = "000000000000000000000000";
-            UserCertificationService userCertificationService = (UserCertificationService) providerContext.getBean("tallyuserService");
+            String adminId = ADMIN_ID;
             String encryptedAbcd = EncryptPasswordHelper.encrypt(userCertificationService.getPasswordSetSpec(), "abcd");
             String encryptedAdmin = EncryptPasswordHelper.encrypt(userCertificationService.getPasswordSetSpec(), "admin");
             boolean setok = false;
@@ -57,8 +79,25 @@ public class DemoServoTest {
         }
     }
 
+    @Test
+    public void testTallyUserDataService() throws ServiceException {
+        Assert.assertEquals(TallyUserDataSolutionDefinition.DATA_SOLUTION_NAME, tallyUserDataService.getName());
+        ReadRequest readRequest = new ReadRequest(Person.class);
+        readRequest.setId(ADMIN_ID);
+        ReadResponse response = tallyUserDataService.read(readRequest);
+        Assert.assertTrue(response.isSuccess());
+
+        Persistable persistable = response.result;
+        Assert.assertNotNull(persistable);
+        Assert.assertTrue(persistable instanceof Person);
+        Person person = (Person) persistable;
+        Assert.assertEquals(person.getName(), "admin");
+        Assert.assertEquals(person.getId().toString(), ADMIN_ID);
+    }
+
     @AfterClass
     public static void teardown() {
+        providerContext.close();
         providerContext = null;
         System.out.println("context stop");
     }

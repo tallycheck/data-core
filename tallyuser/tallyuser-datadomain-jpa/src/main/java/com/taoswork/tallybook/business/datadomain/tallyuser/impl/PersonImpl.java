@@ -7,13 +7,12 @@ import com.taoswork.tallybook.business.datadomain.tallyuser.TallyUserDataDomain;
 import com.taoswork.tallybook.business.datadomain.tallyuser.convert.GenderToStringConverter;
 import com.taoswork.tallybook.datadomain.base.entity.PersistField;
 import com.taoswork.tallybook.datadomain.base.entity.handyprotect.valuegate.CreateDateGate;
+import com.taoswork.tallybook.datadomain.base.presentation.FieldType;
 import com.taoswork.tallybook.datadomain.base.presentation.PresentationClass;
 import com.taoswork.tallybook.datadomain.base.presentation.PresentationField;
-import com.taoswork.tallybook.datadomain.base.presentation.FieldType;
 import com.taoswork.tallybook.datadomain.base.presentation.Visibility;
 import com.taoswork.tallybook.datadomain.onjpa.converters.BooleanToStringConverter;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Entity

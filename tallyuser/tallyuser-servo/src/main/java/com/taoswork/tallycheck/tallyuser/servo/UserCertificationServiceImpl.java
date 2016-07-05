@@ -2,16 +2,17 @@ package com.taoswork.tallycheck.tallyuser.servo;
 
 import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.tallyuser.PersonCertification;
-import com.taoswork.tallycheck.dataservice.mongo.core.entityservice.MongoEntityService;
-import com.taoswork.tallycheck.dataservice.service.IEntityService;
-import com.taoswork.tallycheck.dataservice.tallyuser.TallyUserDataService;
-import com.taoswork.tallycheck.dataservice.tallyuser.service.tallyuser.PersonService;
+import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
+import com.taoswork.tallycheck.datasolution.tallyuser.service.tallyuser.PersonService;
 import com.taoswork.tallycheck.general.solution.conf.TallycheckConfiguration;
 import com.taoswork.tallycheck.general.solution.cryptology.RSAUtility;
 import com.taoswork.tallycheck.general.solution.exception.UnexpectedException;
 import com.taoswork.tallycheck.general.solution.quickinterface.DataHolder;
 import com.taoswork.tallycheck.tallyuser.PasswordSetSpec;
 import com.taoswork.tallycheck.tallyuser.UserCertificationService;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 import javax.crypto.NoSuchPaddingException;
@@ -21,28 +22,32 @@ import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+
 /**
  * Created by Gao Yuan on 2016/6/27.
  */
-public class UserCertificationServiceImpl implements UserCertificationService {
+public class UserCertificationServiceImpl
+        implements UserCertificationService, ApplicationContextAware {
 
+    private TallyUserDataSolution dataSolution;
     private final StandardPasswordEncoder passwordEncoder;
 
     private RSAPublicKey setPublicKey;
     private RSAPrivateKey setPrivateKey;
     private int setVersion = 0;
 
-    private final TallyUserDataService dataService;
-    private final MongoEntityService entityService;
-    private final PersonService personService;
+    private PersonService personService;
 
     public UserCertificationServiceImpl() {
-        dataService = new TallyUserDataService();
-        entityService = dataService.getService(IEntityService.COMPONENT_NAME);
-        personService = dataService.getService(PersonService.SERVICE_NAME);
         String secret = TallycheckConfiguration.instance().getString("tallyuser.standard.password.encoder.secret", "tallyuser");
         passwordEncoder = new StandardPasswordEncoder(secret);
         updateVersion();
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        dataSolution = (TallyUserDataSolution) applicationContext.getBean("tallyUserDataSolution");
+        personService = dataSolution.getService(PersonService.SERVICE_NAME);
     }
 
     public int updateVersion() {

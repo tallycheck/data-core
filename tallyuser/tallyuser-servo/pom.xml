@@ -11,14 +11,24 @@
 
     <artifactId>tallyuser-servo</artifactId>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallyuser-datasolution</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <dependency>
-            <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>tallyuser-dataservice</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.taoswork.tallycheck</groupId>
+            <artifactId>tallyuser-datasolution</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -123,6 +133,11 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.taoswork.tallycheck</groupId>
+            <artifactId>authority-provider-base</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

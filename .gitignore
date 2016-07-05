@@ -1,3 +1,4 @@
+.DS_Store
 target/
 dockertarget/
 pom.xml.tag
@@ -16,6 +17,7 @@ gradle-app.setting
 .classpath
 .project
 *.iml
+**/*.iml
 rebel.xml
 derby.log
 *.log

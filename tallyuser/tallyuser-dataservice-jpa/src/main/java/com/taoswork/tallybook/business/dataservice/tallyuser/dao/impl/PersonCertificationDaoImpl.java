@@ -2,8 +2,8 @@ package com.taoswork.tallybook.business.dataservice.tallyuser.dao.impl;
 
 import com.taoswork.tallybook.business.datadomain.tallyuser.PersonCertification;
 import com.taoswork.tallybook.business.datadomain.tallyuser.impl.PersonCertificationImpl;
-import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonCertificationDao;
 import com.taoswork.tallybook.business.dataservice.tallyuser.conf.TallyUserJpaDatasourceDefinition;
+import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonCertificationDao;
 import com.taoswork.tallybook.dataservice.annotations.Dao;
 import com.taoswork.tallybook.dataservice.core.entity.DaoBase;
 import com.taoswork.tallybook.general.extension.collections.ListUtility;

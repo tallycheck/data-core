@@ -1,10 +1,10 @@
 package com.taoswork.tallycheck.datadomain.tallyuser.impl;
 
-import com.taoswork.tallycheck.datadomain.tallyuser.FacetType;
-import com.taoswork.tallycheck.datadomain.tallyuser.PersonFacetCertification;
 import com.taoswork.tallycheck.datadomain.base.entity.PersistEntity;
 import com.taoswork.tallycheck.datadomain.base.entity.PersistField;
 import com.taoswork.tallycheck.datadomain.onmongo.AbstractDocument;
+import com.taoswork.tallycheck.datadomain.tallyuser.FacetType;
+import com.taoswork.tallycheck.datadomain.tallyuser.PersonFacetCertification;
 import org.mongodb.morphia.annotations.Entity;
 
 

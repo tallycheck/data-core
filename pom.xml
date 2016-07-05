@@ -109,36 +109,53 @@
 
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallyuser</artifactId>
-                <version>${tallycheck.datacore.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.taoswork.tallycheck</groupId>
-                        <artifactId>datadomain-on-jpa</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.taoswork.tallycheck</groupId>
                 <artifactId>tallyuser-api</artifactId>
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallyuser-domain</artifactId>
-                <version>${tallycheck.datacore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallyuser-dataservice</artifactId>
-                <version>${tallycheck.datacore.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallyuser-servo</artifactId>
+                <artifactId>tallyuser-datadomain</artifactId>
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallyadmin-api</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallyadmin-datadomain</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallybiz-api</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallybiz-datadomain</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallymanagement-api</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallymanagement-datadomain</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>data-service-base</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
 
             <!-- Spring Security Libraries [ -->
             <dependency>
@@ -318,6 +335,10 @@
 
     <modules>
         <module>tallyuser</module>
+        <module>tallyadmin</module>
+        <module>tallybiz</module>
+        <module>tallymanagement</module>
+        <module>module-support</module>
     </modules>
 
 

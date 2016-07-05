@@ -1,8 +1,8 @@
 package com.taoswork.tallycheck.datadomain.tallyuser;
 
 import com.taoswork.tallycheck.datadomain.base.entity.PersistField;
-import com.taoswork.tallycheck.datadomain.base.presentation.PresentationField;
 import com.taoswork.tallycheck.datadomain.base.presentation.FieldType;
+import com.taoswork.tallycheck.datadomain.base.presentation.PresentationField;
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.BooleanMode;
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.DateMode;
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.PresentationBoolean;

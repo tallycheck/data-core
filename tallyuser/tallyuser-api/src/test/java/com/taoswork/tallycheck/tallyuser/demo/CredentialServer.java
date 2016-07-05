@@ -9,13 +9,11 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.HashMap;
-
 import java.util.Map;
-
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by gaoyuan on 16-6-13.

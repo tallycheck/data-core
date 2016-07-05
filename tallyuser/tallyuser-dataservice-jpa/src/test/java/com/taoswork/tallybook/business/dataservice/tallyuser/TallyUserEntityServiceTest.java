@@ -3,9 +3,9 @@ package com.taoswork.tallybook.business.dataservice.tallyuser;
 import com.taoswork.tallybook.business.datadomain.tallyuser.Person;
 import com.taoswork.tallybook.business.datadomain.tallyuser.PersonCertification;
 import com.taoswork.tallybook.business.datadomain.tallyuser.impl.PersonImpl;
+import com.taoswork.tallybook.business.dataservice.tallyuser.conf.TallyUserJpaDatasourceDefinition;
 import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonCertificationDao;
 import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonDao;
-import com.taoswork.tallybook.business.dataservice.tallyuser.conf.TallyUserJpaDatasourceDefinition;
 import com.taoswork.tallybook.business.dataservice.tallyuser.service.tallyuser.PersonService;
 import com.taoswork.tallybook.dataservice.core.dao.query.dto.CriteriaQueryResult;
 import com.taoswork.tallybook.dataservice.core.dao.query.dto.CriteriaTransferObject;
@@ -44,13 +44,13 @@ public class TallyUserEntityServiceTest {
     public void testDao() {
         PersonDao personDao = dataService.getService(PersonDao.COMPONENT_NAME);
         Assert.assertNotNull(personDao);
-        Person xx = personDao.readPersonById(-1L);
-        Assert.assertTrue(xx.getName().equals("admin")); //Loaded from load_person.xml
+        Person person = personDao.readPersonById(-1L);
+        Assert.assertTrue(person.getName().equals("admin")); //Loaded from load_person.xml
 
         PersonCertificationDao personCertificationDao = dataService.getService(PersonCertificationDao.COMPONENT_NAME);
         Assert.assertNotNull(personCertificationDao);
         PersonCertification pc = personCertificationDao.readPersonCertificationById(-1L);
-        Assert.assertEquals(pc.getUserCode(), xx.getUuid());
+        Assert.assertEquals(pc.getUserCode(), person.getUuid());
     }
 
     @Test

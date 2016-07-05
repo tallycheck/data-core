@@ -3,8 +3,6 @@ package com.taoswork.tallybook.business.datadomain.tallyuser.impl;
 import com.taoswork.tallybook.business.datadomain.tallyuser.PersonCertification;
 import com.taoswork.tallybook.datadomain.base.entity.PersistField;
 
-import javax.persistence.*;
-
 /**
  * Created by Gao Yuan on 2015/4/21.
  */

@@ -1,17 +1,17 @@
 package com.taoswork.tallycheck.datadomain.tallyuser.impl;
 
 
-import com.taoswork.tallycheck.datadomain.tallyuser.Gender;
-import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.base.entity.PersistEntity;
 import com.taoswork.tallycheck.datadomain.base.entity.PersistField;
 import com.taoswork.tallycheck.datadomain.base.entity.handyprotect.valuegate.CreateDateGate;
+import com.taoswork.tallycheck.datadomain.base.presentation.FieldType;
 import com.taoswork.tallycheck.datadomain.base.presentation.PresentationClass;
 import com.taoswork.tallycheck.datadomain.base.presentation.PresentationField;
-import com.taoswork.tallycheck.datadomain.base.presentation.FieldType;
 import com.taoswork.tallycheck.datadomain.base.presentation.Visibility;
-import com.taoswork.tallycheck.datadomain.onmongo.AbstractDocument;
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.*;
+import com.taoswork.tallycheck.datadomain.onmongo.AbstractDocument;
+import com.taoswork.tallycheck.datadomain.tallyuser.Gender;
+import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import org.mongodb.morphia.annotations.Entity;
 
 import java.util.Date;

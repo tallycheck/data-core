@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>tallyuser-dataservice</artifactId>
+            <artifactId>tallyuser-datasolution</artifactId>
             <version>${tallycheck.datacore.version}</version>
         </dependency>
         <dependency>
@@ -45,7 +45,7 @@
     <modules>
         <module>tallyuser-api</module>
         <module>tallyuser-datadomain</module>
-        <module>tallyuser-dataservice</module>
+        <module>tallyuser-datasolution</module>
         <module>tallyuser-servo</module>
     </modules>
 

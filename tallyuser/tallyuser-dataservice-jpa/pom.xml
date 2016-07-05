@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tallyuser-dataservice</artifactId>
+    <artifactId>tallyuser-datasolution</artifactId>
 
     <dependencies>
         <dependency>
@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>dataservice-on-jpa</artifactId>
+            <artifactId>datasolution-on-jpa</artifactId>
         </dependency>
 
         <dependency>

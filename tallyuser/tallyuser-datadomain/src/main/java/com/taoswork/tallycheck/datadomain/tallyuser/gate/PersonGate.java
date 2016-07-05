@@ -1,7 +1,7 @@
 package com.taoswork.tallycheck.datadomain.tallyuser.gate;
 
-import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.base.entity.valuegate.BaseEntityGate;
+import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;

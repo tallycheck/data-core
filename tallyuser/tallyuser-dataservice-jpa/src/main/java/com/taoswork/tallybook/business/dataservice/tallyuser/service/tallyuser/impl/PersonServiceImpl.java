@@ -2,10 +2,10 @@ package com.taoswork.tallybook.business.dataservice.tallyuser.service.tallyuser.
 
 import com.taoswork.tallybook.business.datadomain.tallyuser.Person;
 import com.taoswork.tallybook.business.datadomain.tallyuser.PersonCertification;
+import com.taoswork.tallybook.business.dataservice.tallyuser.conf.TallyUserJpaDatasourceDefinition;
 import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonCertificationDao;
 import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonDao;
 import com.taoswork.tallybook.business.dataservice.tallyuser.dao.PersonKeyType;
-import com.taoswork.tallybook.business.dataservice.tallyuser.conf.TallyUserJpaDatasourceDefinition;
 import com.taoswork.tallybook.business.dataservice.tallyuser.service.tallyuser.PersonService;
 import com.taoswork.tallybook.dataservice.annotations.EntityService;
 import com.taoswork.tallybook.dataservice.core.entity.EntityServiceBase;

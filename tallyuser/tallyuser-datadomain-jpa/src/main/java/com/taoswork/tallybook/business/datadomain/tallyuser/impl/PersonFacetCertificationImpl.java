@@ -4,8 +4,6 @@ import com.taoswork.tallybook.business.datadomain.tallyuser.FacetType;
 import com.taoswork.tallybook.business.datadomain.tallyuser.PersonFacetCertification;
 import com.taoswork.tallybook.datadomain.base.entity.PersistField;
 
-import javax.persistence.*;
-
 /**
  * Created by Gao Yuan on 2015/4/21.
  */

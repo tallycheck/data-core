@@ -1,9 +1,9 @@
 package com.taoswork.tallycheck.datadomain.tallyuser;
 
-import com.taoswork.tallycheck.datadomain.tallyuser.gate.PersonGate;
-import com.taoswork.tallycheck.datadomain.tallyuser.validation.PersonValidator;
 import com.taoswork.tallycheck.datadomain.base.entity.PersistEntity;
 import com.taoswork.tallycheck.datadomain.onmongo.PersistableDocument;
+import com.taoswork.tallycheck.datadomain.tallyuser.gate.PersonGate;
+import com.taoswork.tallycheck.datadomain.tallyuser.validation.PersonValidator;
 
 import java.util.Date;
 

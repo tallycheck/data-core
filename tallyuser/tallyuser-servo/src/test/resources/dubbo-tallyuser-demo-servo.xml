@@ -20,8 +20,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<bean id="tallyuserService" class="com.taoswork.tallycheck.tallyuser.servo.UserCertificationServiceImpl" />
-	
-	<dubbo:service interface="com.taoswork.tallycheck.tallyuser.UserCertificationService" ref="tallyuserService" />
-	
+
+    <bean id="tallyUserDataSolution" class="com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution" />
+
+    <bean id="tallyUserCertService" class="com.taoswork.tallycheck.tallyuser.servo.UserCertificationServiceImpl" />
+
+    <dubbo:service interface="com.taoswork.tallycheck.tallyuser.UserCertificationService" ref="tallyUserCertService" />
+
+    <bean id="tallyUserDataService" class="com.taoswork.tallycheck.tallyuser.servo.TallyUserDataServiceImpl" />
+
+    <dubbo:service interface="com.taoswork.tallycheck.tallyuser.TallyUserDataService" ref="tallyUserDataService" />
+
 </beans>

@@ -1,8 +1,8 @@
 package com.taoswork.tallycheck.datadomain.tallyuser.validation;
 
-import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.base.entity.validation.BaseEntityValidator;
 import com.taoswork.tallycheck.datadomain.base.entity.validation.error.EntityValidationErrors;
+import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import org.apache.commons.lang3.StringUtils;
 
 /**
