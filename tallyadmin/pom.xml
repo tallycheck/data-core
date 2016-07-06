@@ -25,6 +25,7 @@
         <module>tallyadmin-datadomain</module>
         <module>tallyadmin-datasolution</module>
         <module>tallyadmin-api</module>
+        <module>tallyadmin-servo</module>
     </modules>
 
 </project>

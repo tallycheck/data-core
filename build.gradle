@@ -1,0 +1,48 @@
+
+def getTarFileName(file) {
+    String tarFile = '' + file + '-' + tallyDataCoreVersion + '-assembly.tar.gz'
+    return tarFile
+}
+
+def createUnzipTask(demoType, appName, tarPath) {
+    return tasks.create("makeDockerImage${demoType}"){
+        String appNameWithVersion = appName + '-' + tallyDataCoreVersion
+        String tarFile = getTarFileName(appName)
+        copy {
+            from tarTree(tarPath + tarFile)
+            into binTarget
+        }
+        File finalDir = new File(binTarget + '/'+appName)
+        finalDir.mkdirs()
+        file(binTarget +'/'+appNameWithVersion).renameTo(new File(finalDir, '/app'))
+
+        def dockerfileDir = new File( 'dockerfiles/'+appName )
+        if(dockerfileDir.exists()){
+            copy{
+                from dockerfileDir
+                into finalDir
+            }
+        }
+    }
+}
+
+createUnzipTask('TallyUser', 'tallyuser-servo', 'tallyuser/tallyuser-servo/target/')
+createUnzipTask('TallyAdmin', 'tallyadmin-servo', 'tallyadmin/tallyadmin-servo/target/')
+createUnzipTask('TallyBiz', 'tallybiz-servo', 'tallybiz/tallybiz-servo/target/')
+createUnzipTask('TallyManagement', 'tallymanagement-servo', 'tallymanagement/tallymanagement-servo/target/')
+
+task startAll(type: Exec) {
+    executable 'sh'
+    args "-c", "dockertarget/tallyuser-servo/app/bin/start.sh &&" +
+            " dockertarget/tallyadmin-servo/app/bin/start.sh && " +
+            "dockertarget/tallybiz-servo/app/bin/start.sh && " +
+            "dockertarget/tallymanagement-servo/app/bin/start.sh"
+}
+
+task stopAll(type: Exec) {
+    executable 'sh'
+    args "-c", "dockertarget/tallyuser-servo/app/bin/stop.sh &&" +
+            " dockertarget/tallyadmin-servo/app/bin/stop.sh && " +
+            "dockertarget/tallybiz-servo/app/bin/stop.sh && " +
+            "dockertarget/tallymanagement-servo/app/bin/stop.sh"
+}

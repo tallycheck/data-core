@@ -22,11 +22,11 @@
 
  <bean id="tallyUserDataSolution" class="com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution" />
 
- <bean id="tallyUserCertService" class="com.taoswork.tallycheck.tallyuser.servo.UserCertificationServiceImpl" />
+ <bean id="tallyUserCertService" class="com.taoswork.tallycheck.servo.tallyuser.UserCertificationServiceImpl" />
 
  <dubbo:service interface="com.taoswork.tallycheck.tallyuser.UserCertificationService" ref="tallyUserCertService" />
 
- <bean id="tallyUserDataService" class="com.taoswork.tallycheck.tallyuser.servo.TallyUserDataServiceImpl" />
+ <bean id="tallyUserDataService" class="com.taoswork.tallycheck.servo.tallyuser.TallyUserDataServiceImpl" />
 
  <dubbo:service interface="com.taoswork.tallycheck.tallyuser.TallyUserDataService" ref="tallyUserDataService" />
 

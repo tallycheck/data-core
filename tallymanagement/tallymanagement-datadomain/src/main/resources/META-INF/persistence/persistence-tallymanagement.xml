@@ -6,12 +6,12 @@
 
     <persistence-unit name="tallymanagementPU" transaction-type="RESOURCE_LOCAL">
         <class>com.taoswork.tallybook.business.datadomain.tallymanagement.impl.ModuleRegistryImpl</class>
-        <!--<class>com.taoswork.tallybook.business.datadomain.tallybusiness.impl.BusinessPartnerImpl</class>-->
-        <!--<class>com.taoswork.tallybook.business.datadomain.tallybusiness.impl.EmployeeImpl</class>-->
+        <!--<class>com.taoswork.tallybook.business.datadomain.tallybiz.impl.BusinessPartnerImpl</class>-->
+        <!--<class>com.taoswork.tallybook.business.datadomain.tallybiz.impl.EmployeeImpl</class>-->
 
-        <!--<class>com.taoswork.tallybook.business.datadomain.tallybusiness.security.permission.impl.BuResourcePermissionCaseImpl</class>-->
-        <!--<class>com.taoswork.tallybook.business.datadomain.tallybusiness.security.permission.impl.BuPermissionImpl</class>-->
-        <!--<class>com.taoswork.tallybook.business.datadomain.tallybusiness.security.permission.impl.BuRole</class>-->
+        <!--<class>com.taoswork.tallybook.business.datadomain.tallybiz.security.permission.impl.BuResourcePermissionCaseImpl</class>-->
+        <!--<class>com.taoswork.tallybook.business.datadomain.tallybiz.security.permission.impl.BuPermissionImpl</class>-->
+        <!--<class>com.taoswork.tallybook.business.datadomain.tallybiz.security.permission.impl.BuRole</class>-->
 
         <exclude-unlisted-classes/>
 

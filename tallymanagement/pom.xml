@@ -31,6 +31,7 @@
         <module>tallymanagement-datadomain</module>
         <module>tallymanagement-datasolution</module>
         <module>tallymanagement-api</module>
+        <module>tallymanagement-servo</module>
     </modules>
 
 </project>
