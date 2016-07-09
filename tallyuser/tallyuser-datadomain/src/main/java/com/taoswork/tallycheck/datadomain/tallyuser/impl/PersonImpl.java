@@ -143,6 +143,11 @@ public class PersonImpl
     }
 
     @Override
+    public String getInstanceName() {
+        return getName();
+    }
+
+    @Override
     public String getUuid() {
         return uuid;
     }

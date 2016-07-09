@@ -4,8 +4,13 @@ def getTarFileName(file) {
     return tarFile
 }
 
+task buildMaven(type: Exec) {
+    executable 'sh'
+    args "-c", "rm -rf dockertarget/* && mvn clean install"
+}
+
 def createUnzipTask(demoType, appName, tarPath) {
-    return tasks.create("makeDockerImage${demoType}"){
+    def theTask = tasks.create("makeDockerImage${demoType}"){
         String appNameWithVersion = appName + '-' + tallyDataCoreVersion
         String tarFile = getTarFileName(appName)
         copy {
@@ -24,6 +29,8 @@ def createUnzipTask(demoType, appName, tarPath) {
             }
         }
     }
+ //   theTask.dependsOn buildMaven
+    return theTask
 }
 
 createUnzipTask('TallyUser', 'tallyuser-servo', 'tallyuser/tallyuser-servo/target/')
@@ -38,11 +45,27 @@ task startAll(type: Exec) {
             "dockertarget/tallybiz-servo/app/bin/start.sh && " +
             "dockertarget/tallymanagement-servo/app/bin/start.sh"
 }
-
+task restartAll(type: Exec) {
+    executable 'sh'
+    args "-c", "dockertarget/tallyuser-servo/app/bin/restart.sh &&" +
+            " dockertarget/tallyadmin-servo/app/bin/restart.sh && " +
+            "dockertarget/tallybiz-servo/app/bin/restart.sh && " +
+            "dockertarget/tallymanagement-servo/app/bin/restart.sh"
+}
 task stopAll(type: Exec) {
     executable 'sh'
     args "-c", "dockertarget/tallyuser-servo/app/bin/stop.sh &&" +
             " dockertarget/tallyadmin-servo/app/bin/stop.sh && " +
             "dockertarget/tallybiz-servo/app/bin/stop.sh && " +
             "dockertarget/tallymanagement-servo/app/bin/stop.sh"
+}
+
+startAll.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+}
+restartAll.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+}
+stopAll.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
 }

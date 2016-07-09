@@ -92,4 +92,9 @@ public class Asset extends AbstractDocument {
     public void setFacets(List<AssetFacet> facets) {
         this.facets = facets;
     }
+
+    @Override
+    public String getInstanceName() {
+        return getName();
+    }
 }

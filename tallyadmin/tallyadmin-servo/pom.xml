@@ -35,6 +35,10 @@
             <artifactId>tallyadmin-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.taoswork.tallycheck</groupId>
+            <artifactId>authority-provider-base</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
@@ -137,11 +141,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>authority-provider-base</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

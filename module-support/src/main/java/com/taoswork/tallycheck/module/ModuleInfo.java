@@ -1,0 +1,8 @@
+package com.taoswork.tallycheck.module;
+
+/**
+ * Created by Gao Yuan on 2016/3/15.
+ */
+public interface ModuleInfo {
+    String publicKey();
+}

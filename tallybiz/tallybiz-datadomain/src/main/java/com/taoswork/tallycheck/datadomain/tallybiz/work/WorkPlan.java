@@ -93,4 +93,9 @@ public class WorkPlan extends AbstractDocument {
     public void setTickets(List<WorkTicket> tickets) {
         this.tickets = tickets;
     }
+
+    @Override
+    public String getInstanceName() {
+        return name;
+    }
 }

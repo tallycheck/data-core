@@ -9,6 +9,11 @@
 
        <bean id="tallyAdminDataService" class="com.taoswork.tallycheck.servo.tallyadmin.TallyAdminDataServiceImpl" />
 
+       <bean id="adminAuthorityProvider" class="com.taoswork.tallycheck.servo.tallyadmin.AdminAuthorityProviderImpl"/>
+
        <dubbo:service interface="com.taoswork.tallycheck.tallyadmin.TallyAdminDataService" ref="tallyAdminDataService" />
+
+       <dubbo:service interface="com.taoswork.tallycheck.tallyadmin.AdminAuthorityProvider" ref="adminAuthorityProvider" />
+
 
 </beans>

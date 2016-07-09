@@ -3,7 +3,7 @@ package com.taoswork.tallycheck.servo.tallyuser;
 import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.tallyuser.PersonCertification;
 import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
-import com.taoswork.tallycheck.datasolution.tallyuser.service.tallyuser.PersonService;
+import com.taoswork.tallycheck.datasolution.tallyuser.service.PersonService;
 import com.taoswork.tallycheck.general.solution.conf.TallycheckConfiguration;
 import com.taoswork.tallycheck.general.solution.cryptology.RSAUtility;
 import com.taoswork.tallycheck.general.solution.exception.UnexpectedException;
@@ -111,4 +111,8 @@ public class UserCertificationServiceImpl
         return passwordEncoder.matches(rawPassword, certPwd);
     }
 
+    @Override
+    public Person getPersonByAnyIdentity(String identity) {
+        return personService.readPersonByAnyIdentity(identity);
+    }
 }

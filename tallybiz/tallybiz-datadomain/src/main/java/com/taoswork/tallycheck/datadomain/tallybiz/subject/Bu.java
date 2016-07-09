@@ -65,4 +65,8 @@ public class Bu extends AbstractDocument {
         this.tags = tags;
     }
 
+    @Override
+    public String getInstanceName() {
+        return name;
+    }
 }

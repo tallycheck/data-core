@@ -135,4 +135,9 @@ public class WorkTicket extends AbstractDocument {
     public void setStatus(WorkTicketStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String getInstanceName() {
+        return sheet;
+    }
 }

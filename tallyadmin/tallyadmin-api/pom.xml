@@ -16,6 +16,10 @@
             <groupId>com.taoswork.tallycheck</groupId>
             <artifactId>data-service-base</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.taoswork.tallycheck</groupId>
+            <artifactId>tallyadmin-datadomain</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

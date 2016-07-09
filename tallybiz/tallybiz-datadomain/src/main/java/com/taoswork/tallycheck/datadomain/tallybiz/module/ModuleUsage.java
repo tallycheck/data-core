@@ -42,6 +42,11 @@ public class ModuleUsage extends AbstractDocument {
     @PresentationDate(cellMode = DateCellMode.Date, mode = DateMode.Date)
     protected Date availableTo;
 
+    @Override
+    public String getInstanceName() {
+        return null;
+    }
+
     public ObjectId getModuleId() {
         return moduleId;
     }

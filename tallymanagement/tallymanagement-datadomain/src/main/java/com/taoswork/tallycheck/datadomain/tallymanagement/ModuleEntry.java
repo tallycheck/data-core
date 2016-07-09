@@ -123,4 +123,9 @@ public class ModuleEntry extends AbstractDocument {
     public void setPublicKey(String publicKey) {
         this.publicKey = publicKey;
     }
+
+    @Override
+    public String getInstanceName() {
+        return null;
+    }
 }

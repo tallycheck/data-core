@@ -1,5 +1,7 @@
 package com.taoswork.tallycheck.tallyuser.demo;
 
+import com.taoswork.tallycheck.datadomain.tallyuser.Person;
+import com.taoswork.tallycheck.datadomain.tallyuser.impl.PersonImpl;
 import com.taoswork.tallycheck.general.solution.cryptology.RSAUtility;
 import com.taoswork.tallycheck.general.solution.quickinterface.DataHolder;
 import com.taoswork.tallycheck.tallyuser.PasswordSetSpec;
@@ -73,5 +75,10 @@ public class CredentialServer implements UserCertificationService {
     @Override
     public boolean checkPasswordByAnyIdentity(String identity, String rawPassword) {
         return checkPassword(identity, rawPassword);
+    }
+
+    @Override
+    public Person getPersonByAnyIdentity(String identity) {
+        return new PersonImpl();
     }
 }

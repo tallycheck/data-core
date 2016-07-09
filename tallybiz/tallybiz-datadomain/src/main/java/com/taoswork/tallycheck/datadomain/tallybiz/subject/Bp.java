@@ -47,6 +47,11 @@ public class Bp extends AbstractDocument {
     @PresentationField()
     protected Bu guest;
 
+    @Override
+    public String getInstanceName() {
+        return alias;
+    }
+
     public String getAlias() {
         return alias;
     }

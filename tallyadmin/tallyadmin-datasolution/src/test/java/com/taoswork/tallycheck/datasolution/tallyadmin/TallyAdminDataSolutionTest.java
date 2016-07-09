@@ -2,14 +2,15 @@ package com.taoswork.tallycheck.datasolution.tallyadmin;
 
 import com.taoswork.tallycheck.authority.provider.AllPassAuthorityProvider;
 import com.taoswork.tallycheck.datadomain.tallyadmin.AdminEmployee;
+import com.taoswork.tallycheck.dataservice.SecurityAccessor;
 import com.taoswork.tallycheck.dataservice.exception.ServiceException;
 import com.taoswork.tallycheck.dataservice.query.CriteriaQueryResult;
 import com.taoswork.tallycheck.datasolution.config.IDatasourceConfiguration;
 import com.taoswork.tallycheck.datasolution.mongo.config.TestDatasourceConfiguration;
-import com.taoswork.tallycheck.datasolution.security.ProtectedAccessContext;
+import com.taoswork.tallycheck.datasolution.service.EasyEntityService;
 import com.taoswork.tallycheck.datasolution.service.IEntityService;
 import com.taoswork.tallycheck.datasolution.tallyadmin.dao.AdminEmployeeDao;
-import com.taoswork.tallycheck.datasolution.tallyadmin.service.tallyadmin.AdminEmployeeService;
+import com.taoswork.tallycheck.datasolution.tallyadmin.service.AdminEmployeeService;
 import org.bson.types.ObjectId;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -21,12 +22,12 @@ import org.junit.Test;
  */
 public class TallyAdminDataSolutionTest {
     static TallyAdminDataSolution dataSolution = null;
+    private SecurityAccessor accessor = new SecurityAccessor();
 
     @BeforeClass
     public static void setDataService() {
         dataSolution = new TallyAdminDataSolution(TestDatasourceConfiguration.class);
         dataSolution.setAuthorityProvider(new AllPassAuthorityProvider());
-        dataSolution.setAuthorityContext(new ProtectedAccessContext());
     }
 
     @AfterClass
@@ -38,9 +39,11 @@ public class TallyAdminDataSolutionTest {
 
     @Test
     public void testDataService() throws ServiceException {
+        EasyEntityService easyEntityService = new EasyEntityService(dataSolution);
         IEntityService entityService = dataSolution.getService(IEntityService.COMPONENT_NAME);
         Assert.assertNotNull(entityService);
-        CriteriaQueryResult<AdminEmployee> admins = entityService.query(AdminEmployee.class, null);
+        CriteriaQueryResult<AdminEmployee> admins = easyEntityService.query(accessor,
+                AdminEmployee.class, null);
 
         AdminEmployeeDao employeeDao = dataSolution.getService(AdminEmployeeDao.COMPONENT_NAME);
         Assert.assertNotNull(employeeDao);

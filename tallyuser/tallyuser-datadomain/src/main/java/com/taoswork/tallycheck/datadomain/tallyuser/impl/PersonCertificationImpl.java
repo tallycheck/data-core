@@ -44,6 +44,11 @@ public class PersonCertificationImpl extends AbstractDocument
     }
 
     @Override
+    public String getInstanceName() {
+        return "";
+    }
+
+    @Override
     public String getUserCode() {
         return userCode;
     }

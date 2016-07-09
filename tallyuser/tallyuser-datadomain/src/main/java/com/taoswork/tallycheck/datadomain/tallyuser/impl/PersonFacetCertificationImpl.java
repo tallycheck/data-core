@@ -101,4 +101,9 @@ public class PersonFacetCertificationImpl
     public void setLastUpdateDate(Long lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
+
+    @Override
+    public String getInstanceName() {
+        return null;
+    }
 }

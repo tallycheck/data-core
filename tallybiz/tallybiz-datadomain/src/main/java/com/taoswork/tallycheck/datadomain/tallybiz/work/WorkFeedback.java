@@ -35,6 +35,11 @@ public class WorkFeedback extends AbstractDocument {
     @PersistField(fieldType = FieldType.HTML)
     protected String content;
 
+    @Override
+    public String getInstanceName() {
+        return null;
+    }
+
     public WorkTicket getWorkTicket() {
         return workTicket;
     }
