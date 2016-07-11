@@ -1,18 +1,15 @@
 package com.taoswork.tallycheck.authentication.servo.service;
 
+import com.taoswork.tallycheck.authentication.PasswordSetSpec;
+import com.taoswork.tallycheck.authentication.UserAuthenticationService;
+import com.taoswork.tallycheck.authentication.servo.UserAuthenticationDataSolution;
 import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.tallyuser.PersonCertification;
-import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
 import com.taoswork.tallycheck.datasolution.tallyuser.service.PersonService;
 import com.taoswork.tallycheck.general.solution.conf.TallycheckConfiguration;
 import com.taoswork.tallycheck.general.solution.cryptology.RSAUtility;
 import com.taoswork.tallycheck.general.solution.exception.UnexpectedException;
 import com.taoswork.tallycheck.general.solution.quickinterface.DataHolder;
-import com.taoswork.tallycheck.tallyuser.PasswordSetSpec;
-import com.taoswork.tallycheck.tallyuser.UserAuthenticationService;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 import javax.crypto.NoSuchPaddingException;
@@ -27,9 +24,9 @@ import java.security.interfaces.RSAPublicKey;
  * Created by Gao Yuan on 2016/6/27.
  */
 public class UserAuthenticationServiceImpl
-        implements UserAuthenticationService, ApplicationContextAware {
+        implements UserAuthenticationService {
 
-    private TallyUserDataSolution dataSolution;
+    private UserAuthenticationDataSolution dataSolution;
     private final StandardPasswordEncoder passwordEncoder;
 
     private RSAPublicKey setPublicKey;
@@ -44,9 +41,8 @@ public class UserAuthenticationServiceImpl
         updateVersion();
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        dataSolution = (TallyUserDataSolution) applicationContext.getBean("tallyUserDataSolution");
+    public void setDataSolution(UserAuthenticationDataSolution dataSolution) {
+        this.dataSolution = dataSolution;
         personService = dataSolution.getService(PersonService.SERVICE_NAME);
     }
 
@@ -111,8 +107,4 @@ public class UserAuthenticationServiceImpl
         return passwordEncoder.matches(rawPassword, certPwd);
     }
 
-    @Override
-    public Person getPersonByAnyIdentity(String identity) {
-        return personService.readPersonByAnyIdentity(identity);
-    }
 }

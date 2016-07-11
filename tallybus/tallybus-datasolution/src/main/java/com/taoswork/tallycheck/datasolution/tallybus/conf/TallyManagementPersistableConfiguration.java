@@ -1,7 +1,7 @@
 package com.taoswork.tallycheck.datasolution.tallybus.conf;
 
 
-import com.taoswork.tallycheck.datadomain.tallymanagement.TallyManagementDataDomain;
+import com.taoswork.tallycheck.datadomain.tallybus.TallyManagementDataDomain;
 import com.taoswork.tallycheck.datasolution.annotations.DaoMark;
 import com.taoswork.tallycheck.datasolution.annotations.EntityServiceMark;
 import com.taoswork.tallycheck.datasolution.mongo.config.MongoPersistableConfiguration;
