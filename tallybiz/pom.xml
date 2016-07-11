@@ -24,7 +24,7 @@
         <module>tallybiz-datadomain</module>
         <module>tallybiz-datasolution</module>
         <module>tallybiz-api</module>
-        <module>tallybiz-servo</module>
+        <module>tallybiz-servo-4-admin</module>
     </modules>
 
 </project>

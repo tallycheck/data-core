@@ -1,6 +1,7 @@
 package com.taoswork.tallycheck.datasolution.tallyuser.conf;
 
 import com.mongodb.ServerAddress;
+import com.taoswork.tallycheck.datadomain.tallyuser.TallyUserDataDomain;
 import com.taoswork.tallycheck.datasolution.mongo.MongoDatasourceDefinition;
 import com.taoswork.tallycheck.datasolution.mongo.MongoDatasourceDefinitionBase;
 import com.taoswork.tallycheck.datasolution.mongo.config.MongoDatasourceConfiguration;
@@ -26,14 +27,14 @@ public class TallyUserDatasourceConfiguration extends MongoDatasourceConfigurati
         @Override
         protected ServerAddress determineServerAddress() {
             org.apache.commons.configuration2.Configuration conf = TallycheckConfiguration.instance();
-            String host = conf.getString("tallyuser.db.mongo.host", ServerAddress.defaultHost());
-            int port = conf.getInt("tallyuser.db.mongo.port", ServerAddress.defaultPort());
+            String host = conf.getString(TallyUserDataDomain.HOST_KEY, ServerAddress.defaultHost());
+            int port = conf.getInt(TallyUserDataDomain.PORT_KEY, ServerAddress.defaultPort());
             return new ServerAddress(host, port);
         }
 
         @Override
         public String getDbName() {
-            return "tallyuser";
+            return TallyUserDataDomain.DB_NAME;
         }
 
     }

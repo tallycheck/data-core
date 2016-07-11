@@ -92,6 +92,7 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
+                <scope>compile</scope>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework</groupId>
@@ -109,7 +110,17 @@
 
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>base-servo</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
                 <artifactId>tallyuser-api</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallyuser-authentication-api</artifactId>
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
             <dependency>
@@ -118,6 +129,11 @@
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.taoswork.tallycheck</groupId>
+                <artifactId>tallyadmin-authority-api</artifactId>
+                <version>${tallycheck.datacore.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
                 <artifactId>tallyadmin-api</artifactId>
@@ -142,12 +158,12 @@
 
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallymanagement-api</artifactId>
+                <artifactId>tallybus-api</artifactId>
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.taoswork.tallycheck</groupId>
-                <artifactId>tallymanagement-datadomain</artifactId>
+                <artifactId>tallybus-datadomain</artifactId>
                 <version>${tallycheck.datacore.version}</version>
             </dependency>
 
@@ -337,8 +353,10 @@
         <module>tallyuser</module>
         <module>tallyadmin</module>
         <module>tallybiz</module>
-        <module>tallymanagement</module>
+        <module>tallybus</module>
         <module>module-support</module>
+        <module>tallyauthority</module>
+        <module>base-servo</module>
     </modules>
 
 

@@ -22,10 +22,12 @@
     </dependencyManagement>
 
     <modules>
+        <module>tallyadmin-authority-api</module>
+        <module>tallyadmin-api</module>
         <module>tallyadmin-datadomain</module>
         <module>tallyadmin-datasolution</module>
-        <module>tallyadmin-api</module>
         <module>tallyadmin-servo</module>
+        <module>tallyadmin-authority-servo</module>
     </modules>
 
 </project>

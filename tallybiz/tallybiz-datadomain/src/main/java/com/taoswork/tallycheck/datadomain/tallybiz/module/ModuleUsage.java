@@ -9,7 +9,7 @@ import com.taoswork.tallycheck.datadomain.base.presentation.typed.PresentationDa
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.PresentationExternalForeignKey;
 import com.taoswork.tallycheck.datadomain.onmongo.AbstractDocument;
 import com.taoswork.tallycheck.datadomain.tallybiz.subject.Bu;
-import com.taoswork.tallycheck.datadomain.tallymanagement.ModuleEntry;
+import com.taoswork.tallycheck.datadomain.tallybus.ModuleEntry;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Reference;

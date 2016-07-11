@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>tallyuser-servo</artifactId>
+            <artifactId>tallyuser-servo-4-admin</artifactId>
             <version>${tallycheck.datacore.version}</version>
         </dependency>
 
@@ -46,7 +46,9 @@
         <module>tallyuser-api</module>
         <module>tallyuser-datadomain</module>
         <module>tallyuser-datasolution</module>
-        <module>tallyuser-servo</module>
+        <module>tallyuser-servo-4-admin</module>
+        <module>tallyuser-authentication-api</module>
+        <module>tallyuser-authentication-servo</module>
     </modules>
 
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <bean id="authorityProvider" class="com.taoswork.tallycheck.authority.provider.AllPassAuthorityProvider"/>
+
+    <bean id="tallyUserDataSolution" class="com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution">
+        <property name="authorityProvider" ref="authorityProvider"/>
+    </bean>
+
+    <bean id="tallyUserDataService" class="com.taoswork.tallycheck.servo.tallyuser.TallyUserDataServiceImpl" >
+        <property name="dataSolution" ref="tallyUserDataSolution"/>
+    </bean>
+
+    <dubbo:service interface="com.taoswork.tallycheck.tallyuser.TallyUserDataService" ref="tallyUserDataService" />
+
+</beans>

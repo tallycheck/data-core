@@ -33,31 +33,33 @@ def createUnzipTask(demoType, appName, tarPath) {
     return theTask
 }
 
-createUnzipTask('TallyUser', 'tallyuser-servo', 'tallyuser/tallyuser-servo/target/')
+createUnzipTask('TallyAdminAuthority', 'tallyadmin-authority-servo', 'tallyadmin/tallyadmin-authority-servo/target/')
 createUnzipTask('TallyAdmin', 'tallyadmin-servo', 'tallyadmin/tallyadmin-servo/target/')
-createUnzipTask('TallyBiz', 'tallybiz-servo', 'tallybiz/tallybiz-servo/target/')
-createUnzipTask('TallyManagement', 'tallymanagement-servo', 'tallymanagement/tallymanagement-servo/target/')
+createUnzipTask('TallyUser', 'tallyuser-servo-4-admin', 'tallyuser/tallyuser-servo-4-admin/target/')
+createUnzipTask('TallyBiz', 'tallybiz-servo-4-admin', 'tallybiz/tallybiz-servo-4-admin/target/')
+createUnzipTask('TallyBus', 'tallybus-servo', 'tallybus/tallybus-servo/target/')
+
+def getServoCommandChain(command) {
+    String cmds = "" +
+            "dockertarget/tallyadmin-authority-servo/app/bin/" + command + " && " +
+            "dockertarget/tallyadmin-servo/app/bin/" + command + " && " +
+            "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + " && " +
+            "dockertarget/tallybiz-servo-4-admin/app/bin/"+command +" && " +
+            "dockertarget/tallybus-servo/app/bin/"+command +"";
+    return cmds
+}
 
 task startAll(type: Exec) {
     executable 'sh'
-    args "-c", "dockertarget/tallyuser-servo/app/bin/start.sh &&" +
-            " dockertarget/tallyadmin-servo/app/bin/start.sh && " +
-            "dockertarget/tallybiz-servo/app/bin/start.sh && " +
-            "dockertarget/tallymanagement-servo/app/bin/start.sh"
+    args "-c", getServoCommandChain("start.sh");
 }
 task restartAll(type: Exec) {
     executable 'sh'
-    args "-c", "dockertarget/tallyuser-servo/app/bin/restart.sh &&" +
-            " dockertarget/tallyadmin-servo/app/bin/restart.sh && " +
-            "dockertarget/tallybiz-servo/app/bin/restart.sh && " +
-            "dockertarget/tallymanagement-servo/app/bin/restart.sh"
+    args "-c", getServoCommandChain("restart.sh");
 }
 task stopAll(type: Exec) {
     executable 'sh'
-    args "-c", "dockertarget/tallyuser-servo/app/bin/stop.sh &&" +
-            " dockertarget/tallyadmin-servo/app/bin/stop.sh && " +
-            "dockertarget/tallybiz-servo/app/bin/stop.sh && " +
-            "dockertarget/tallymanagement-servo/app/bin/stop.sh"
+    args "-c", getServoCommandChain("stop.sh");
 }
 
 startAll.dependsOn {

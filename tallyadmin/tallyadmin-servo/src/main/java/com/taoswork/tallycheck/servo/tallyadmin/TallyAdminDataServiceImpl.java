@@ -16,7 +16,9 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class TallyAdminDataServiceImpl
         extends DataServiceDelegate
-        implements TallyAdminDataService, ApplicationContextAware {
+        implements TallyAdminDataService
+        //, ApplicationContextAware
+{
     protected TallyAdminDataSolution dataSolution;
     protected AdminEmployeeService adminEmployeeService;
 
@@ -24,13 +26,24 @@ public class TallyAdminDataServiceImpl
         super();
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        dataSolution = (TallyAdminDataSolution) applicationContext.getBean("tallyAdminDataSolution");
-        adminEmployeeService = dataSolution.getService(AdminEmployeeService.SERVICE_NAME);
+    public void setDataSolution(TallyAdminDataSolution dataSolution) {
+        this.dataSolution = dataSolution;
+        this.adminEmployeeService = dataSolution.getService(AdminEmployeeService.SERVICE_NAME);
 
-        setDataService((IDataService) dataSolution.getService(BasicDataService.COMPONENT_NAME));
+        IDataService insideDataService = dataSolution.getService(BasicDataService.COMPONENT_NAME);
+        setDataService(insideDataService);
     }
+
+    //    @Override
+//    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+//        dataSolution = (TallyAdminDataSolution) applicationContext.getBean("tallyAdminDataSolution");
+//
+//        adminEmployeeService = dataSolution.getService(AdminEmployeeService.SERVICE_NAME);
+//
+//        IDataService insideDataService = dataSolution.getService(BasicDataService.COMPONENT_NAME);
+//        setDataService(insideDataService);
+//
+//    }
 
     @Override
     public AdminEmployee getAdminEmployeeByPersonId(String personId) {

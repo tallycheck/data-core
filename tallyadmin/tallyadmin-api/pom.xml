@@ -14,6 +14,10 @@
     <dependencies>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
+            <artifactId>tallyadmin-authority-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.taoswork.tallycheck</groupId>
             <artifactId>data-service-base</artifactId>
         </dependency>
         <dependency>

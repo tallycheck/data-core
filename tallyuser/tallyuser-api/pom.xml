@@ -14,27 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
-            <artifactId>general-solution</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.taoswork.tallycheck</groupId>
             <artifactId>tallyuser-datadomain</artifactId>
         </dependency>
         <dependency>
             <groupId>com.taoswork.tallycheck</groupId>
             <artifactId>data-service-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
         </dependency>
 
     </dependencies>

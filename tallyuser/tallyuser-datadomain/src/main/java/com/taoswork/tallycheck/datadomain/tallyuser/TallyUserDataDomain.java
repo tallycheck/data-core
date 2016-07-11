@@ -16,4 +16,8 @@ public final class TallyUserDataDomain {
         };
     }
 
+    public static final String HOST_KEY = "tallyuser.db.mongo.host";
+    public static final String PORT_KEY = "tallyuser.db.mongo.port";
+    public static final String DB_NAME = "tally-user";
+
 }

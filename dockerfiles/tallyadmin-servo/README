@@ -1,1 +1,1 @@
-docker build -t altiplanogao/tallyuser-servo .
+docker build -t altiplanogao/tallyadmin-servo .

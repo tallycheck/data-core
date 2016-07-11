@@ -3,7 +3,6 @@ package com.taoswork.tallycheck.datasolution.tallyadmin;
 import com.taoswork.tallycheck.datasolution.annotations.DataSolutionMark;
 import com.taoswork.tallycheck.datasolution.mongo.config.MongoDatasourceConfiguration;
 import com.taoswork.tallycheck.datasolution.mongo.core.MongoDataSolutionBase;
-import com.taoswork.tallycheck.datasolution.tallyadmin.conf.AdminSpecifiedConfiguration;
 import com.taoswork.tallycheck.datasolution.tallyadmin.conf.TallyAdminDatasourceConfiguration;
 import com.taoswork.tallycheck.datasolution.tallyadmin.conf.TallyAdminPersistableConfiguration;
 
@@ -26,7 +25,7 @@ public class TallyAdminDataSolution
     public TallyAdminDataSolution(Class<? extends MongoDatasourceConfiguration> dSrcConfClz) {
         super(new TallyAdminDataSolutionDefinition(),
                 TallyAdminPersistableConfiguration.class,
-                dSrcConfClz, AdminSpecifiedConfiguration.class);
+                dSrcConfClz);
     }
 
     @Override

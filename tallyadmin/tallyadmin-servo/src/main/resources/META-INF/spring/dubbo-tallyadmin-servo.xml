@@ -5,15 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-       <bean id="tallyAdminDataSolution" class="com.taoswork.tallycheck.datasolution.tallyadmin.TallyAdminDataSolution" />
+    <bean id="tallyAdminDataSolution" class="com.taoswork.tallycheck.datasolution.tallyadmin.TallyAdminDataSolution">
+        <property name="authorityProvider" ref="authorityProvider"/>
+    </bean>
 
-       <bean id="tallyAdminDataService" class="com.taoswork.tallycheck.servo.tallyadmin.TallyAdminDataServiceImpl" />
+    <bean id="tallyAdminDataService" class="com.taoswork.tallycheck.servo.tallyadmin.TallyAdminDataServiceImpl">
+        <property name="dataSolution" ref="tallyAdminDataSolution"/>
+    </bean>
 
-       <bean id="adminAuthorityProvider" class="com.taoswork.tallycheck.servo.tallyadmin.AdminAuthorityProviderImpl"/>
+    <dubbo:service interface="com.taoswork.tallycheck.tallyadmin.TallyAdminDataService" ref="tallyAdminDataService" />
 
-       <dubbo:service interface="com.taoswork.tallycheck.tallyadmin.TallyAdminDataService" ref="tallyAdminDataService" />
-
-       <dubbo:service interface="com.taoswork.tallycheck.tallyadmin.AdminAuthorityProvider" ref="adminAuthorityProvider" />
-
+    <dubbo:reference id="authorityProvider" interface="com.taoswork.tallycheck.tallyadmin.authority.AdminAuthorityProvider"/>
 
 </beans>
