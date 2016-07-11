@@ -5,6 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+    <dubbo:reference id="authorityProvider" interface="com.taoswork.tallycheck.tallyadmin.authority.AdminAuthorityProvider"/>
+
     <bean id="tallyUserDataSolution" class="com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution">
         <property name="authorityProvider" ref="authorityProvider"/>
     </bean>
@@ -14,7 +16,5 @@
     </bean>
 
     <dubbo:service interface="com.taoswork.tallycheck.tallyuser.TallyUserDataService" ref="tallyUserDataService" />
-
-    <dubbo:reference id="authorityProvider" interface="com.taoswork.tallycheck.tallyadmin.authority.AdminAuthorityProvider"/>
 
 </beans>

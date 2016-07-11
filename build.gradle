@@ -33,14 +33,16 @@ def createUnzipTask(demoType, appName, tarPath) {
     return theTask
 }
 
+createUnzipTask('TallyUserAuthentication', 'tallyuser-authentication-servo', 'tallyuser/tallyuser-authentication-servo/target/')
 createUnzipTask('TallyAdminAuthority', 'tallyadmin-authority-servo', 'tallyadmin/tallyadmin-authority-servo/target/')
 createUnzipTask('TallyAdmin', 'tallyadmin-servo', 'tallyadmin/tallyadmin-servo/target/')
 createUnzipTask('TallyUser', 'tallyuser-servo-4-admin', 'tallyuser/tallyuser-servo-4-admin/target/')
 createUnzipTask('TallyBiz', 'tallybiz-servo-4-admin', 'tallybiz/tallybiz-servo-4-admin/target/')
-createUnzipTask('TallyBus', 'tallybus-servo', 'tallybus/tallybus-servo/target/')
+createUnzipTask('TallyBus', 'tallybus-servo-4-admin', 'tallybus/tallybus-servo-4-admin/target/')
 
 def getServoCommandChain(command) {
     String cmds = "" +
+            "dockertarget/tallyuser-authentication-servo/app/bin/" + command + " && " +
             "dockertarget/tallyadmin-authority-servo/app/bin/" + command + " && " +
             "dockertarget/tallyadmin-servo/app/bin/" + command + " && " +
             "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + " && " +

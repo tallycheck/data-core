@@ -1,5 +1,6 @@
 package com.taoswork.tallycheck.authentication.servo;
 
+import com.taoswork.tallycheck.authority.provider.AllPassAuthorityProvider;
 import com.taoswork.tallycheck.datasolution.annotations.DataSolutionMark;
 import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
 
@@ -9,4 +10,8 @@ import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
 @DataSolutionMark
 public class UserAuthenticationDataSolution
         extends TallyUserDataSolution {
+    public UserAuthenticationDataSolution() {
+        super();
+        this.setAuthorityProvider(new AllPassAuthorityProvider());
+    }
 }

@@ -22,12 +22,11 @@ public class DemoServoTest {
     @BeforeClass
     public static void setup() {
         providerContext =
-                new ClassPathXmlApplicationContext("dubbo-tallyuser-authentication-demo-servo.xml");
+                new ClassPathXmlApplicationContext("META-INF/spring/dubbo-tallyuser-authentication-servo.xml");
         providerContext.start();
         System.out.println("context started");
-         tallyUserDataSolution = (TallyUserDataSolution)
+        tallyUserDataSolution = (TallyUserDataSolution)
                  providerContext.getBean("userAuthenticationDataSolution");
-        tallyUserDataSolution.setAuthorityProvider(new AllPassAuthorityProvider());
         userAuthenticationService = (UserAuthenticationService)
                 providerContext.getBean("userAuthenticationService");
     }

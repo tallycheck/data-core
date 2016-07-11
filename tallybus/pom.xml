@@ -31,7 +31,7 @@
         <module>tallybus-datadomain</module>
         <module>tallybus-datasolution</module>
         <module>tallybus-api</module>
-        <module>tallybus-servo</module>
+        <module>tallybus-servo-4-admin</module>
     </modules>
 
 </project>
