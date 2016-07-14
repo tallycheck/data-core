@@ -47,7 +47,7 @@ def getServoCommandChain(command) {
             "dockertarget/tallyadmin-servo/app/bin/" + command + " && " +
             "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + " && " +
             "dockertarget/tallybiz-servo-4-admin/app/bin/"+command +" && " +
-            "dockertarget/tallybus-servo/app/bin/"+command +"";
+            "dockertarget/tallybus-servo-4-admin/app/bin/"+command +"";
     return cmds
 }
 
