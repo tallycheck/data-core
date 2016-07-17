@@ -1,6 +1,5 @@
 package com.taoswork.tallycheck.servo.tallyuser;
 
-import com.taoswork.tallycheck.authority.provider.AllPassAuthorityProvider;
 import com.taoswork.tallycheck.datadomain.base.entity.Persistable;
 import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.dataservice.SecurityAccessor;

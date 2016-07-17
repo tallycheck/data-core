@@ -9,15 +9,22 @@ task buildMaven(type: Exec) {
     args "-c", "rm -rf dockertarget/* && mvn clean install"
 }
 
+task clearDockerTarget(type: Exec) {
+    executable 'sh'
+    args "-c", "rm -rf dockertarget/* "
+}
+
 def createUnzipTask(demoType, appName, tarPath) {
     def theTask = tasks.create("makeDockerImage${demoType}"){
         String appNameWithVersion = appName + '-' + tallyDataCoreVersion
+        File finalDir = new File(binTarget + '/'+appName)
+        finalDir.delete()
+        (new File(appNameWithVersion)).delete()
         String tarFile = getTarFileName(appName)
         copy {
             from tarTree(tarPath + tarFile)
             into binTarget
         }
-        File finalDir = new File(binTarget + '/'+appName)
         finalDir.mkdirs()
         file(binTarget +'/'+appNameWithVersion).renameTo(new File(finalDir, '/app'))
 
@@ -40,36 +47,38 @@ createUnzipTask('TallyUser', 'tallyuser-servo-4-admin', 'tallyuser/tallyuser-ser
 createUnzipTask('TallyBiz', 'tallybiz-servo-4-admin', 'tallybiz/tallybiz-servo-4-admin/target/')
 createUnzipTask('TallyBus', 'tallybus-servo-4-admin', 'tallybus/tallybus-servo-4-admin/target/')
 
-def getServoCommandChain(command) {
+def getServoCommandChain(command, debug) {
     String cmds = "" +
-            "dockertarget/tallyuser-authentication-servo/app/bin/" + command + " && " +
-            "dockertarget/tallyadmin-authority-servo/app/bin/" + command + " && " +
+//            "dockertarget/tallyuser-authentication-servo/app/bin/" + command + " && " +
+//            "dockertarget/tallyadmin-authority-servo/app/bin/" + command + " && " +
             "dockertarget/tallyadmin-servo/app/bin/" + command + " && " +
-            "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + " && " +
+//            "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + debug +  " && " +
             "dockertarget/tallybiz-servo-4-admin/app/bin/"+command +" && " +
             "dockertarget/tallybus-servo-4-admin/app/bin/"+command +"";
     return cmds
 }
 
-task startAll(type: Exec) {
-    executable 'sh'
-    args "-c", getServoCommandChain("start.sh");
-}
 task restartAll(type: Exec) {
     executable 'sh'
-    args "-c", getServoCommandChain("restart.sh");
-}
-task stopAll(type: Exec) {
-    executable 'sh'
-    args "-c", getServoCommandChain("stop.sh");
+    args "-c", getServoCommandChain("restart.sh", " ");
 }
 
-startAll.dependsOn {
-    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+task startAll(type: Exec) {
+    executable 'sh'
+    args "-c", getServoCommandChain("start.sh", " debug ");
 }
-restartAll.dependsOn {
-    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+
+task stopAll(type: Exec) {
+    executable 'sh'
+    args "-c", getServoCommandChain("stop.sh", "");
 }
-stopAll.dependsOn {
-    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
-}
+
+//startAll.dependsOn {
+//    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+//}
+//restartAll.dependsOn {
+//    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+//}
+//stopAll.dependsOn {
+//    tasks.findAll { task -> task.name.startsWith('makeDockerImage') }
+//}

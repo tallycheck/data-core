@@ -7,7 +7,7 @@ public class TallyAdminDataDomain {
 
     public static Class<?>[] persistableEntities() {
         return new Class<?>[]{
-                AdminProtectionSpace.class,
+                AdminProtectionSpec.class,
                 AdminProtection.class,
                 AdminEmployee.class,
                 AdminGroup.class,

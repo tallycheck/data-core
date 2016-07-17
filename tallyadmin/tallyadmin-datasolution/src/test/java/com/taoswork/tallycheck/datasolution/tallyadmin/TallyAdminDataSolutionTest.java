@@ -21,6 +21,7 @@ import org.junit.Test;
  * Created by Gao Yuan on 2015/5/13.
  */
 public class TallyAdminDataSolutionTest {
+    public final static String ROOT_PERSON_ID = "000000000000000000000000";
     static TallyAdminDataSolution dataSolution = null;
     private SecurityAccessor accessor = new SecurityAccessor();
 
@@ -54,7 +55,7 @@ public class TallyAdminDataSolutionTest {
         AdminEmployeeService employeeService = dataSolution.getService(AdminEmployeeService.SERVICE_NAME);
         Assert.assertNotNull(employeeService);
 
-        String rootPersonId =  AdminEmployee.ROOT_PERSON_ID;
+        String rootPersonId = ROOT_PERSON_ID;
         AdminEmployee employeeInDb = employeeService.readAdminEmployeeByPersonId(rootPersonId);
         Assert.assertTrue(employeeInDb.getPersonId().equals(rootPersonId));
         Assert.assertTrue(employeeInDb.getTitle().equals("Master"));

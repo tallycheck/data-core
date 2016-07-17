@@ -18,6 +18,13 @@ public class AdminEmployeeGate extends BaseEntityGate<AdminEmployee> {
             }
             entity.setPersonId(person.getId().toHexString());
         }
+
+        if(oldEntity != null) {
+            entity.setSuperUser(oldEntity.isSuperUser());
+        } else {
+            entity.setSuperUser(false);
+        }
+
         AccountStatus as = entity.getStatus();
         if (as == null) {
             as = new AccountStatus();

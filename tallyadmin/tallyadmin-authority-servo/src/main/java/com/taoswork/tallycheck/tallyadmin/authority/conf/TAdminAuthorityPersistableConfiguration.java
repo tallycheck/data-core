@@ -35,7 +35,7 @@ public class TAdminAuthorityPersistableConfiguration
     @Override
     protected Class<?>[] createPersistableEntities() {
         List<Class> classes = new ArrayList<Class>();
-        CollectionUtils.addAll(classes, AuthorityDomain.domainEntities());
+//        CollectionUtils.addAll(classes, AuthorityDomain.domainEntities());
         CollectionUtils.addAll(classes, TallyAdminDataDomain.persistableEntities());
         return classes.toArray(new Class[]{});
     }

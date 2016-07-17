@@ -1,9 +1,13 @@
 [{
   "collection":"com.taoswork.tallycheck.datadomain.tallyadmin.AdminProtection",
   "entries":[
-    { "_id" : "56fa75e1456e9c696c76df05", "protectionSpace" : "admin-protection-space", "namespace" : "admin-namespace", "name" : "AdminProtection", "resource" : "#com-taoswork-tallybook-business-datadomain-tallyadmin-AdminProtection", "protectionMode" : "FitAll", "masterControlled" : true },
-    { "_id" : "56fa75e1456e9c696c76df06", "protectionSpace" : "admin-protection-space", "namespace" : "admin-namespace", "name" : "AdminEmployee", "resource" : "#com-taoswork-tallybook-business-datadomain-tallyadmin-AdminEmployee", "protectionMode" : "FitAll", "masterControlled" : true},
-    { "_id" : "56fa75e1456e9c696c76df07", "protectionSpace" : "admin-protection-space", "namespace" : "admin-namespace", "name" : "AdminGroup", "resource" : "#com-taoswork-tallybook-business-datadomain-tallyadmin-AdminGroup", "protectionMode" : "FitAll", "masterControlled" : true}
-  ]
-}
+    { "_id" : "56fa75e1456e9c696c76df05", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "AdminProtection", "resource" : "com.taoswork.tallycheck.datadomain.tallyadmin.AdminProtection", "protectionMode" : "FitAll", "masterControlled" : true },
+    { "_id" : "56fa75e1456e9c696c76df06", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "AdminEmployee", "resource" : "com.taoswork.tallycheck.datadomain.tallyadmin.AdminEmployee", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df07", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "AdminGroup", "resource" : "com.taoswork.tallycheck.datadomain.tallyadmin.AdminGroup", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df08", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "People", "resource" : "com.taoswork.tallycheck.datadomain.tallyuser.Person", "protectionMode" : "FitAll", "masterControlled" : true}
+  ]}
 ]

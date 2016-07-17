@@ -11,7 +11,7 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("adminprotect")
 @PersistEntity(value = "adminprotect", asDefaultPermissionGuardian = true)
 public class AdminProtection extends Protection {
-    public static final String COMMON_NAMESPACE = "admin-namespace";
+    public static final String COMMON_REGION_NAME = "admin-protection-region";
 
     public AdminProtection() {
     }
@@ -21,8 +21,8 @@ public class AdminProtection extends Protection {
     }
 
     public AdminProtection(Class resource, DProtectionMode mode, boolean masterControlled) {
-        this.setProtectionSpace(AdminProtectionSpace.COMMON_SPACE_NAME);
-        this.setNamespace(COMMON_NAMESPACE);
+        this.setProtectionSpec(AdminProtectionSpec.COMMON_SPEC_NAME);
+        this.setProtectionRegion(COMMON_REGION_NAME);
         this.setName(resource.getSimpleName());
         this.setResource(resource);
         this.setProtectionMode(mode);

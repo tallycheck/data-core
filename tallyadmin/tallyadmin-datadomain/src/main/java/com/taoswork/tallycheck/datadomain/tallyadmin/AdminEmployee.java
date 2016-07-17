@@ -31,14 +31,14 @@ import java.util.List;
         asDefaultPermissionGuardian = true,
         valueGates = {AdminEmployeeGate.class},
         fieldOverrides = {
-                @PersistEntity.FieldOverride(fieldName = BaseAuthority.FN_NAMESPACE,
+                @PersistEntity.FieldOverride(fieldName = BaseAuthority.FN_PROTECTION_REGION,
                         define = @PersistField(editable = false)),
                 @PersistEntity.FieldOverride(fieldName = BaseAuthority.FN_OWNER_ID,
                         define = @PersistField(editable = false))
         }
 )
 @PresentationClass(fieldOverrides = {
-        @PresentationClass.FieldOverride(fieldName = BaseAuthority.FN_NAMESPACE,
+        @PresentationClass.FieldOverride(fieldName = BaseAuthority.FN_PROTECTION_REGION,
                 define = @PresentationField(visibility = Visibility.HIDDEN_ALL)),
         @PresentationClass.FieldOverride(fieldName = BaseAuthority.FN_OWNER_ID,
                 define = @PresentationField(visibility = Visibility.HIDDEN_ALL))
@@ -47,7 +47,6 @@ public class AdminEmployee extends UserAuthority<AdminGroup> {
     //protected Big
 //    @Transient
 //    private transient Person person;
-    public final static String ROOT_PERSON_ID = "000000000000000000000000";
 
     private String name;
 
@@ -99,8 +98,15 @@ public class AdminEmployee extends UserAuthority<AdminGroup> {
         this.person = person;
     }
 
+    @Override
+    public void setOwnerId(String ownerId) {
+        super.setOwnerId(ownerId);
+        this.personId = ownerId;
+    }
+
     public void setPersonId(String personId) {
         this.personId = personId;
+        this.setOwnerId(personId);
     }
 
     public String getPersonId() {

@@ -4,6 +4,8 @@ import com.taoswork.tallycheck.authority.provider.AuthorityProviderImpl;
 import com.taoswork.tallycheck.authority.provider.IAuthorityProvider;
 import com.taoswork.tallycheck.datadomain.tallyadmin.AdminEmployee;
 import com.taoswork.tallycheck.datadomain.tallyadmin.AdminGroup;
+import com.taoswork.tallycheck.datadomain.tallyadmin.AdminProtection;
+import com.taoswork.tallycheck.datadomain.tallyadmin.AdminProtectionSpec;
 import com.taoswork.tallycheck.datasolution.mongo.core.entityservice.MongoEntityService;
 import com.taoswork.tallycheck.datasolution.service.IEntityService;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +25,7 @@ public class TAdminAuthoritySpecifiedConfiguration {
 
     @Bean(name = ADMIN_PERMISSION_PROVIDER)
     public IAuthorityProvider getAuthorityProvider() {
-        return new AuthorityProviderImpl(entityService,
+        return new AuthorityProviderImpl(entityService, AdminProtectionSpec.class, AdminProtection.class,
                 AdminEmployee.class, AdminGroup.class);
     }
 }

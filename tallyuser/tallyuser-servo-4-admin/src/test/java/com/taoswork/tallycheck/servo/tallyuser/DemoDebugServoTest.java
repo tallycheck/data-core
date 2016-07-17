@@ -1,8 +1,7 @@
 package com.taoswork.tallycheck.servo.tallyuser;
 
-import com.taoswork.tallycheck.dataservice.SecurityAccessor;
+import com.taoswork.tallycheck.servo.DemoServo;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 
@@ -13,26 +12,8 @@ public class DemoDebugServoTest {
 
     @Test
     public void runAsMain() throws IOException {
-        String mavenDebug = System.getProperty("maven.surefire.debug");
-        if (!"true".equals(mavenDebug)) {
-            return;
-        }
+        String configXml = "META-INF/spring/dubbo-tallyuser-servo.xml";
 
-        String tallyDebug = System.getProperty("tally.debug");
-        if (!"true".equals(tallyDebug)) {
-            return;
-        }
-        final String ADMIN_ID = "000000000000000000000000";
-        SecurityAccessor accessor = new SecurityAccessor();
-
-        ClassPathXmlApplicationContext providerContext =
-                new ClassPathXmlApplicationContext("dubbo-tallyuser-demo-servo.xml");
-        providerContext.start();
-        System.out.println("context started");
-
-        System.in.read();
-
-        providerContext.close();
-        System.out.println("context stop");
+        DemoServo.runServo(configXml);
     }
 }

@@ -41,8 +41,8 @@ public class TallyAdminDataSolution
 //                newMaster.setPersonId(masterPersonId);
 //                newMaster.setName("Admin");
 //                newMaster.setTitle("Master");
-//                newMaster.setProtectionSpace(AdminSecurityDefinition.PROTECTION_SPACE);
-//                newMaster.setNamespace(AdminSecurityDefinition.ADMIN_TENANT);
+//                newMaster.setProtectionSpec(AdminSecurityDefinition.PROTECTION_SPACE);
+//                newMaster.setProtectionRegion(AdminSecurityDefinition.ADMIN_TENANT);
 //                entityService.create(newMaster);
 //            }
 //        } catch (ServiceException e) {

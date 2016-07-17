@@ -1,7 +1,7 @@
 [{
   "collection":"com.taoswork.tallycheck.datadomain.tallyadmin.AdminEmployee",
   "entries":[
-    {"_id"	:	"000000000000000000000000", "personId" : "000000000000000000000000", "name" : "Admin" , "title" : "Master" , "protectionSpace" : "AdminSpace" , "namespace" : "Administration"}
+    {"_id"	:	"000000000000000000000000", "personId" : "000000000000000000000000", "ownerId" : "000000000000000000000000", "name" : "Admin" , "title" : "Master" , "superUser" : "true", "protectionSpec" : "admin-protection-spec" , "protectionRegion" : "admin-protection-region"}
   ]
 }
 ]
