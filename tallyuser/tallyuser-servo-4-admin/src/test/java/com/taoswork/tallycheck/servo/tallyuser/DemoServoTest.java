@@ -6,6 +6,7 @@ import com.taoswork.tallycheck.dataservice.SecurityAccessor;
 import com.taoswork.tallycheck.dataservice.exception.ServiceException;
 import com.taoswork.tallycheck.dataservice.io.request.ReadRequest;
 import com.taoswork.tallycheck.dataservice.io.response.ReadResponse;
+import com.taoswork.tallycheck.dataservice.operator.Operator;
 import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolution;
 import com.taoswork.tallycheck.datasolution.tallyuser.TallyUserDataSolutionDefinition;
 import com.taoswork.tallycheck.tallyuser.TallyUserDataService;
@@ -24,6 +25,7 @@ public class DemoServoTest {
     private static TallyUserDataService tallyUserDataService;
     private static final String ADMIN_ID = "000000000000000000000000";
     private SecurityAccessor accessor = new SecurityAccessor();
+    private Operator operator = new Operator();
 
     @BeforeClass
     public static void setup() {
@@ -43,7 +45,7 @@ public class DemoServoTest {
         Assert.assertEquals(TallyUserDataSolutionDefinition.DATA_SOLUTION_NAME, tallyUserDataService.getName());
         ReadRequest readRequest = new ReadRequest(Person.class);
         readRequest.setId(ADMIN_ID);
-        ReadResponse response = tallyUserDataService.read(accessor, readRequest);
+        ReadResponse response = tallyUserDataService.read(operator, accessor, readRequest);
         Assert.assertTrue(response.isSuccess());
 
         Persistable persistable = response.result;

@@ -1,6 +1,5 @@
 package com.taoswork.tallycheck.datasolution.tallyadmin.conf;
 
-import com.taoswork.tallycheck.authority.domain.AuthorityDomain;
 import com.taoswork.tallycheck.datadomain.tallyadmin.TallyAdminDataDomain;
 import com.taoswork.tallycheck.datasolution.annotations.DaoMark;
 import com.taoswork.tallycheck.datasolution.annotations.EntityServiceMark;

@@ -8,6 +8,7 @@ import com.taoswork.tallycheck.datadomain.tallyuser.impl.PersonImpl;
 import com.taoswork.tallycheck.dataservice.SecurityAccessor;
 import com.taoswork.tallycheck.dataservice.exception.EntityValueValidationException;
 import com.taoswork.tallycheck.dataservice.exception.ServiceException;
+import com.taoswork.tallycheck.dataservice.operator.Operator;
 import com.taoswork.tallycheck.dataservice.query.CriteriaQueryResult;
 import com.taoswork.tallycheck.dataservice.query.CriteriaTransferObject;
 import com.taoswork.tallycheck.datasolution.config.IDatasourceConfiguration;
@@ -32,6 +33,7 @@ import java.util.UUID;
 public class TallyUserEntityServiceTest {
     TallyUserDataSolution dataSolution = null;
     private SecurityAccessor accessor = new SecurityAccessor();
+    private Operator operator = new Operator();
     int counter = 0;
 
     @Before
@@ -120,7 +122,7 @@ public class TallyUserEntityServiceTest {
         try {
             Person admin = new PersonImpl();
             admin.setName("admin").setUuid(UUID.randomUUID().toString());
-            entityService.create(accessor, admin);
+            entityService.create(operator, accessor, admin);
             Assert.fail();
         } catch (ServiceException e) {
             if (!(e instanceof EntityValueValidationException)) {
@@ -130,8 +132,8 @@ public class TallyUserEntityServiceTest {
 
         long existingCount = 0;
         try {
-            Person personImp = entityService.straightRead(accessor, PersonImpl.class, AdminId);
-            Person person = entityService.straightRead(accessor, Person.class, AdminId);
+            Person personImp = easyEntityService.straightRead(operator, accessor, PersonImpl.class, AdminId);
+            Person person = easyEntityService.straightRead(operator, accessor, Person.class, AdminId);
             Assert.assertEquals(person.getUuid(), personImp.getUuid());
             Assert.assertEquals(person.getId(), personImp.getId());
 
@@ -156,10 +158,10 @@ public class TallyUserEntityServiceTest {
                 Person admin = new PersonImpl();
                 admin.setName("admin").setUuid(UUID.randomUUID().toString());
                 admin.setMobile("1234567890" + (1000 + i));
-                entityService.create(accessor, admin);
+                entityService.create(operator, accessor, admin);
 
                 ObjectId id = admin.getId();
-                Person adminFromDb = entityService.straightRead(accessor, Person.class, id);
+                Person adminFromDb = easyEntityService.straightRead(operator, accessor, Person.class, id);
 
                 Assert.assertTrue("Created and Read should be same: " + i, admin.getId().equals(adminFromDb.getId()));
 //                Assert.assertTrue("Created Object [" + admin.getId() + "] should have Id: " + expected, admin.getId().equals(0L + expected));

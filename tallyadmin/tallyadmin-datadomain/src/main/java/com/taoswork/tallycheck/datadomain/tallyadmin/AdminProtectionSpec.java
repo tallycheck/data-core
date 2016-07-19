@@ -8,9 +8,8 @@ import org.mongodb.morphia.annotations.Entity;
  */
 @Entity("adminprotectspace")
 public class AdminProtectionSpec extends ProtectionSpec {
-    public static final String COMMON_SPEC_NAME = "admin-protection-spec";
 
     public AdminProtectionSpec() {
-        this.setSpecName(COMMON_SPEC_NAME);
+        this.setSpecName(TallyAdminDataDomain.COMMON_SPEC_NAME);
     }
 }
