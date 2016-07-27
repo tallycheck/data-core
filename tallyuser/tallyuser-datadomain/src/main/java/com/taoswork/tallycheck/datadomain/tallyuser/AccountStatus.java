@@ -9,13 +9,14 @@ import com.taoswork.tallycheck.datadomain.base.presentation.typed.PresentationBo
 import com.taoswork.tallycheck.datadomain.base.presentation.typed.PresentationDate;
 import org.mongodb.morphia.annotations.Embedded;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Gao Yuan on 2015/4/16.
  */
 @Embedded
-public class AccountStatus {
+public class AccountStatus implements Serializable{
 
     @PersistField(fieldType = FieldType.BOOLEAN)
     @PresentationField(order = 1)

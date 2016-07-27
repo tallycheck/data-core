@@ -48,14 +48,42 @@ createUnzipTask('TallyBiz', 'tallybiz-servo-4-admin', 'tallybiz/tallybiz-servo-4
 createUnzipTask('TallyBus', 'tallybus-servo-4-admin', 'tallybus/tallybus-servo-4-admin/target/')
 
 def getServoCommandChain(command, debug) {
-    String cmds = "" +
-//            "dockertarget/tallyuser-authentication-servo/app/bin/" + command + " && " +
-//            "dockertarget/tallyadmin-authority-servo/app/bin/" + command + " && " +
-            "dockertarget/tallyadmin-servo/app/bin/" + command + " && " +
-//            "dockertarget/tallyuser-servo-4-admin/app/bin/" + command + debug +  " && " +
-            "dockertarget/tallybiz-servo-4-admin/app/bin/"+command +" && " +
-            "dockertarget/tallybus-servo-4-admin/app/bin/"+command +"";
+    def  apps = [
+            'tallyuser-authentication-servo',
+            'tallyadmin-authority-servo',
+            'tallyadmin-servo',
+            'tallyuser-servo-4-admin',
+            'tallybiz-servo-4-admin',
+            'tallybus-servo-4-admin'];
+    String cmds = '';
+    apps.eachWithIndex { app , i ->
+        if(i != 0)
+            cmds += " && "
+        cmds += "dockertarget/" + app + "/app/bin//" + command;
+    };
+
     return cmds
+}
+def getDockerBuildImagesCommand(){
+    def  apps = ['tallyuser-authentication-servo',
+                 'tallyadmin-authority-servo',
+                 'tallyadmin-servo',
+                 'tallyuser-servo-4-admin',
+                 'tallybiz-servo-4-admin',
+                 'tallybus-servo-4-admin'];
+    String cmds = '';
+    apps.eachWithIndex { app , i ->
+        if(i != 0)
+            cmds += " && "
+        cmds += "docker build -t altiplanogao/" + app + " dockertarget/" + app;
+    };
+
+    return cmds
+}
+
+task buildDockerImages(type: Exec){
+    executable 'sh'
+    args "-c", getDockerBuildImagesCommand();
 }
 
 task restartAll(type: Exec) {
