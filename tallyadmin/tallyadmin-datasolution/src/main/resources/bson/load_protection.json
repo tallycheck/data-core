@@ -8,6 +8,26 @@
     { "_id" : "56fa75e1456e9c696c76df07", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
       "name" : "AdminGroup", "resource" : "com.taoswork.tallycheck.datadomain.tallyadmin.AdminGroup", "protectionMode" : "FitAll", "masterControlled" : true},
     { "_id" : "56fa75e1456e9c696c76df08", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
-      "name" : "People", "resource" : "com.taoswork.tallycheck.datadomain.tallyuser.Person", "protectionMode" : "FitAll", "masterControlled" : true}
+      "name" : "People", "resource" : "com.taoswork.tallycheck.datadomain.tallyuser.Person", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df09", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "ModuleEntry", "resource" : "com.taoswork.tallycheck.datadomain.tallybus.ModuleEntry", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df10", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "Bu", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.subject.Bu", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df11", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "Employee", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.subject.Employee", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df12", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "Role", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.subject.Role", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df13", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "Asset", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.subject.Asset", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df14", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "Bp", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.subject.Bp", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df15", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "ModuleUsage", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.module.ModuleUsage", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df16", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "WorkPlan", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.work.WorkPlan", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df17", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "WorkTicket", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.work.WorkTicket", "protectionMode" : "FitAll", "masterControlled" : true},
+    { "_id" : "56fa75e1456e9c696c76df18", "protectionSpec" : "admin-protection-spec", "protectionRegion" : "admin-protection-region",
+      "name" : "WorkFeedback", "resource" : "com.taoswork.tallycheck.datadomain.tallybiz.work.WorkFeedback", "protectionMode" : "FitAll", "masterControlled" : true}
   ]}
 ]

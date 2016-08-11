@@ -43,6 +43,10 @@ import java.util.Date;
 //
 //})
 @PresentationClass(
+        tabs = {
+                @PresentationClass.Tab(name = PersonImpl.Presentation.Tab.General, order=0),
+                @PresentationClass.Tab(name = PersonImpl.Presentation.Tab.Journal, order=9)
+        }
 )
 public class PersonImpl
         extends AbstractDocument
@@ -80,7 +84,7 @@ public class PersonImpl
     protected String uuid;
 
     @PersistField(fieldType = FieldType.DATE, fieldValueGateOverride = CreateDateGate.class, skipDefaultFieldValueGate = true, editable = false)
-    @PresentationField(order = 99, visibility = Visibility.GRID_HIDE)
+    @PresentationField(tab= Presentation.Tab.Journal, order = 99, visibility = Visibility.GRID_HIDE)
     @PresentationDate(mode = DateMode.DateTime, cellMode = DateCellMode.Date)
     public Date createDate = new Date();
 
@@ -175,4 +179,12 @@ public class PersonImpl
                 " {" + uuid + '}' +
                 ']';
     }
+
+    public static class Presentation {
+        public static class Tab {
+            public static final String General = "General";
+            public static final String Journal = "Journal";
+        }
+    }
+
 }

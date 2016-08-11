@@ -16,6 +16,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Locale;
+
 /**
  * Created by Gao Yuan on 2016/6/27.
  */
@@ -43,7 +45,7 @@ public class DemoServoTest {
     @Test
     public void testTallyUserDataService() throws ServiceException {
         Assert.assertEquals(TallyUserDataSolutionDefinition.DATA_SOLUTION_NAME, tallyUserDataService.getName());
-        ReadRequest readRequest = new ReadRequest(Person.class);
+        ReadRequest readRequest = new ReadRequest(Person.class, Locale.US);
         readRequest.setId(ADMIN_ID);
         ReadResponse response = tallyUserDataService.read(operator, accessor, readRequest);
         Assert.assertTrue(response.isSuccess());
