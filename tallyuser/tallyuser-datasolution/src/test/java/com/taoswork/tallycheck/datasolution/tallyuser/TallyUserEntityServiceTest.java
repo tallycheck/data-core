@@ -6,7 +6,7 @@ import com.taoswork.tallycheck.datadomain.tallyuser.Person;
 import com.taoswork.tallycheck.datadomain.tallyuser.PersonCertification;
 import com.taoswork.tallycheck.datadomain.tallyuser.impl.PersonImpl;
 import com.taoswork.tallycheck.dataservice.SecurityAccessor;
-import com.taoswork.tallycheck.dataservice.exception.EntityValueValidationException;
+import com.taoswork.tallycheck.dataservice.exception.EntityValidationErrorCodeException;
 import com.taoswork.tallycheck.dataservice.exception.ServiceException;
 import com.taoswork.tallycheck.dataservice.operator.Operator;
 import com.taoswork.tallycheck.dataservice.query.CriteriaQueryResult;
@@ -125,7 +125,7 @@ public class TallyUserEntityServiceTest {
             entityService.create(operator, accessor, admin);
             Assert.fail();
         } catch (ServiceException e) {
-            if (!(e instanceof EntityValueValidationException)) {
+            if (!(e instanceof EntityValidationErrorCodeException)) {
                 Assert.fail();
             }
         }

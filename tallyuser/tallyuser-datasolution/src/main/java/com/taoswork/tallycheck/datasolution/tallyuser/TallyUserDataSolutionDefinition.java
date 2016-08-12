@@ -15,8 +15,8 @@ public class TallyUserDataSolutionDefinition implements IDataSolutionDefinition 
     public static final String TUSER_ENTITY_MESSAGES = ENTITY_MESSAGES_FILE_PREFIX +
             "tallyuser/";
 
-    public static final String TUSER_ERROR_MESSAGES = ERROR_MESSAGES_FILE_PREFIX +
-            "tallyuser/";
+    public static final String TUSER_ERROR_MESSAGES = Utils.FileChain(ERROR_MESSAGES_FILE_PREFIX, FILE_DELIMTER,
+            "tallyuser/", "permission/");
 
     public static final String TUSER_RUNTIME_PROPERTIES = RUNTIME_PROPERTIES_FILE_PREFIX +
             "tallyuser/";
